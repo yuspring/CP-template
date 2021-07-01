@@ -30,7 +30,7 @@ using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 using pdd = pair<double, double>;
 
-const ll INF = 2147483647;
+const ll INF = 0x3f3f3f3f;
 const ll LINF = (ll)1 << 60;
 const int mod = 1e9 + 7;
 
@@ -40,20 +40,18 @@ ostream& operator<<(ostream& os, pair<A, B> p){
 }
 
 template<typename T>
+void print(T arr, size_t N){
+    for(int i = 0; i < N; i++) cerr << *(arr+i) << " ";
+    cerr << '\n';
+}
+
+template<typename T>
 void printv(T arr, size_t N, size_t M){
     for (int i = 0; i < N; i++){
         for (int j = 0; j < M; j++) cerr << *(*(arr + i) + j) << " ";
         cerr << '\n';
     }
     cerr << '\n';
-}
-
-ostream& operator<<(ostream& os, vector<vector<int>> const& v){
-    for (auto&& i : v){
-        for (auto&& j : i) os << j << " ";
-        os << '\n';
-    }
-    return os;
 }
 
 /*------------------------------------------------------------------------*/
