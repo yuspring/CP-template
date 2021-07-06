@@ -18,9 +18,9 @@ vector<pair<T, T>> getConvexHull(vector<pair<T, T>>& pnts){
     hull.reserve(n);
 
     for(int i = 0; i < 2; i++){
-        int t = hull.size();
+        int t = sz(hull);
         for(pair<T, T> pnt : pnts){
-            while(hull.size() - t >= 2 && cross(hull.back() - hull[hull.size() - 2], pnt - hull[hull.size() - 2]) <= 0){
+            while(sz(hull) - t >= 2 && cross(hull.back() - hull[sz(hull) - 2], pnt - hull[sz(hull) - 2]) <= 0){
                 hull.pop_back();
             }
             hull.pb(pnt);

@@ -1,7 +1,7 @@
 const int N = 1e6 + 5;
 vector<int> adj[N], adj2[N];
 int vis[N], scc[N], id;
-stack<int> st;
+stack<int,vector<int>> st;
 
 void dfs1(int u){
     vis[u] = true;
