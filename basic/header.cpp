@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-//#include <bits/extc+.h>
+//#include <bits/extc++.h>
 
 /*
 by: yuspring
@@ -7,10 +7,13 @@ bobotou is cute!!
 target: AC
 */
 
+//#define int long long
 #define bobotou ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define pb push_back
 #define eb emplace_back
 #define pf push_front
+#define pob pop_back
+#define pof pop_front
 #define sz(x) ((int)x.size())
 #define iter(x) x.begin(), x.end()
 #define niter(a,n) a, a+n
@@ -21,11 +24,14 @@ target: AC
 #define S second
 #define L idx<<1
 #define R idx<<1|1
+#define out(x) cout << x << '\n';
+#define outs(x) cout << x << ' ';
 
 using namespace std;
 //using namespace __gn_pbds;
 
 using ll = long long;
+using ld = long double;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 using pdd = pair<double, double>;
@@ -39,19 +45,15 @@ ostream& operator<<(ostream& os, pair<A, B> p){
     return os << '(' << p.F << ',' << p.S << ')';
 }
 
-template<typename T>
-void print(T arr, size_t N){
-    for(int i = 0; i < N; i++) cerr << *(arr+i) << " ";
-    cerr << '\n';
+template<typename A>
+ostream& operator<<(ostream& os, vector<A> p){
+    for (A x : p) os << x << " \n"[&x == p.end() - 1];
+    return os;
 }
 
-template<typename T>
-void printv(T arr, size_t N, size_t M){
-    for (int i = 0; i < N; i++){
-        for (int j = 0; j < M; j++) cerr << *(*(arr + i) + j) << " ";
-        cerr << '\n';
-    }
-    cerr << '\n';
+template<typename A>
+void printv(A arr, size_t N, size_t M){
+    for (int i = 0; i < N; i++) for (int j = 0; j < M; j++) cerr << *(*(arr + i) + j) << " \n"[j == M - 1];
 }
 
 /*------------------------------------------------------------------------*/
