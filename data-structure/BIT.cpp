@@ -1,4 +1,3 @@
-const int N = 1e5 + 5;
 int bit[N];
 
 void update(int pos, int val){

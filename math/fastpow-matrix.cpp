@@ -1,13 +1,11 @@
+#define MOD(x)  ((x % mod) + mod) % mod;
+
 struct matrix{
 
     ll m[2][2];
     
     matrix(){ 
-        for(int i = 0; i < 2; i++){
-            for(int j = 0; j < 2; j++){
-                m[i][j] = 0;
-            }
-        }
+        memset(m,0,sizeof(m));
     }
 
     matrix operator*(matrix a){
@@ -15,7 +13,7 @@ struct matrix{
         for (int i = 0;i < 2;i++){
             for (int j = 0;j < 2;j++){
                 for (int k = 0;k < 2;k++){
-                    res.m[i][j] = ( (res.m[i][j] % mod) + ( (m[i][k] % mod) * (a.m[k][j] % mod) ) % mod) % mod;
+                    res.m[i][j] = MOD( MOD(res.m[i][j]) + MOD( MOD(m[i][k]) * MOD(a.m[k][j]) ) ) ;
                 }
             }
         }

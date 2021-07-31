@@ -28,7 +28,7 @@ target: AC
 #define outs(x) cout << x << ' ';
 
 using namespace std;
-//using namespace __gn_pbds;
+//using namespace __gnu_pbds;
 
 using ll = long long;
 using ld = long double;
@@ -47,7 +47,7 @@ ostream& operator<<(ostream& os, pair<A, B> p){
 
 template<typename A>
 ostream& operator<<(ostream& os, vector<A> p){
-    for (A x : p) os << x << " \n"[&x == p.end() - 1];
+    for (auto it = p.begin(); it != p.end(); it++) os << *it << " \n"[it == p.end() - 1];
     return os;
 }
 

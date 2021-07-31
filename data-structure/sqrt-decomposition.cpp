@@ -1,5 +1,4 @@
-const int MAXN = 1000000;
-const int INF = 0x3f3f3f3f;
+const int MAXN = 1e5+5;
 int N, block[MAXN], tag[MAXN], arr[MAXN];
 int k = sqrt(N);
 

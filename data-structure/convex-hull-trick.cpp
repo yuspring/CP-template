@@ -1,17 +1,36 @@
 struct line{
     int a, b;
-    int val(int x){
+
+    int operator() (int x){
         return a * x + b;
     }
-    int dot(line x){
-        return (b - x.b) / (x.a - a);
+};
+
+deque<line> dq;
+
+bool dot(line a, line b, line c){
+    return (b.a - a.a) * (c.b - b.b) >= (b.b - a.b) * (c.a - b.a);
+}
+
+void insert(line a){
+    while (sz(dq) >= 2 && dot(dq[sz(dq) - 2], dq[sz(dq) - 1], a))
+        dq.pob();
+
+    dq.pb(a);
+}
+
+int query(int x){
+    while (sz(dq) >= 2 && dq[0](x) <= dq[1](x))
+        dq.pof();
+    return dq[0].a * x + dq[0].b;
+}
+
+int query2(int x){
+    int l = -1, r = sz(dq);
+    while (r - l > 1){
+        int m = (l + r) >> 1;
+        if (dq[m](x) <= dq[m + 1](x)) l = m;
+        else r = m;
     }
-}
-
-bool query(int x){
-    return dq[0].val(x) >= dq[1].val(x);
-}
-
-bool insert(line x){
-    return x.dot(dq.back()) <= dq.back().dot(dq[sz(dq)-2];
+    return dq[r](x);
 }

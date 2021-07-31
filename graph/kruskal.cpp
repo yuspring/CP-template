@@ -1,13 +1,12 @@
-vector<pair<pii, int>> e;
+vector<pair<pii, int>> edge;
 
 int kruskal(){
-    initDSU();
     int res = 0;
-    for (auto& i : e){
-        int a = i.F.F, b = i.F.S;
+    for (auto &v : edge){
+        int a = v.F.F, b = v.F.S;
         if (find(a) == find(b)) continue;
         unite(a, b);
-        res += i.S;
+        res += v.S;
     }
-    return;
+    return res;
 }

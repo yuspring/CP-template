@@ -1,29 +1,26 @@
-const ll INF = 1 << 31 - 1;
-int N;
-vector<pii> adj[MAXN];
+//adj first is vertex, second is distance
 
 int SPFA(int s, int e){
     vector<int> dis(N, INF), cnt(N);
     vector<bool> inq(N);
-    dis[s] = 0;
     queue<int> q;
-    q.push(s);
+
+    dis[s] = 0;
     inq[s] = 1;
-    
-    while(!q.empty()){
-        int v = q.front();
+    q.push(s);
+
+    while (!q.empty()){
+        int u = q.front();
         q.pop();
-        inq[v] = 0;
-        for(pii p : adj[v]){
-            if(dis[p.F] != INF || dis[v] + p.S > dis[p.F]) continue;
-            cnt[p.F]++;
-            if(cnt[p.F] >= N) return INF;
-            d[p.F] = d[v] + p.S;
-            if(!inq[p.F]){
-                inq[p.F] = 1;
-                q.push(p.F);
+        inq[u] = 0;
+        for (pii v : adj[u]){
+            if (dis[v.F] != INF || dis[u] + v.S > dis[v.F]) continue;
+            if (++cnt[v.F] >= N) return INF;
+            dis[v.F] = dis[u] + v.S;
+            if (!inq[v.F]){
+                inq[v.F] = 1, q.push(v.F);
             }
-        }        
+        }
     }
     return dis[e];
 }

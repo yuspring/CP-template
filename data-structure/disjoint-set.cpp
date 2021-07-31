@@ -1,10 +1,4 @@
-const int MAXN = 1e6 + 5;
-int boss[MAXN], rk[MAXN];
-int N;
-
-void initDSU(){
-    for(int i = 0; i < N; i++) boss[i] = i, rk[i] = 1;
-}
+int boss[N], rk[N];
 
 int find(int x){
 	return (x == boss[x] ? x : boss[x] = find(boss[x]));

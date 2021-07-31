@@ -14,6 +14,7 @@ while (!q.empty()){
 
     for (auto v : adj[u]){
         in[v]--;
+        //todo
         if (in[v] == 0) q.push(v);
     }
 }
