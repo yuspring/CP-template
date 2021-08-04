@@ -1,32 +1,34 @@
 const int MAXN = 5e5 + 5;
 
+#define L idx<<1
+#define R idx<<1|1
+
 struct Line{
-    int m, b;
+    int a, b;
     int operator()(int x){
-        return m * x + b;
+        return a * x + b;
     }
 };
 
 Line tr[MAXN << 2];
 
-void insert(Line seg, int idx = 1, int l = 0, int r = N - 1){
+void insert(Line seg, int idx, int l, int r){
     if (l == r){
         if (seg(l) > tr[idx](l)){
             tr[idx] = seg;
         }
         return;
     }
-    int mid = l + r >> 1;
-    if (tr[idx].m > seg.m) swap(tr[idx], seg);
-    if (tr[idx](mid) < seg(mid)){
-        swap(tr[idx], seg);
-        insert(seg, idx << 1, l, mid);
-    } else insert(seg, idx << 1 | 1, mid + 1, r);
+
+    int m = (l + r) >> 1;
+    if (tr[idx].a > seg.a) swap(tr[idx], seg);
+    if (tr[idx](m) < seg(m)) swap(tr[idx], seg), insert(seg, L, l, m);
+    else insert(seg, R, m + 1, r);
 }
 
-int query(int x, int idx = 1, int l = 0, int r = N - 1){
+int query(int x, int idx, int l, int r){
     if (l == r) return tr[idx](x);
-    int mid = l + r >> 1;
-    if (x <= mid) return max(tr[idx](x), query(x, idx << 1, l, mid));
-    else return max(tr[idx](x), query(x, idx << 1 | 1, mid + 1, r));
+    int m = (l + r) >> 1;
+    if (x <= m) return max(tr[idx](x), query(x, L, l, m));
+    else return max(tr[idx](x), query(x, R, m + 1, r));
 }
