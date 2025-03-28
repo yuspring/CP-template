@@ -13,5 +13,7 @@ void merge_sort(int arr[ ], int l, int r){
         }
         tmp[idx++] = arr[lid];
     }
-    for (int i = l; i < rid; i++) arr[i] = tmp[i - l];
+    for (int i = l; i < rid; i++){
+        arr[i] = tmp[i - l];
+    } 
 }
